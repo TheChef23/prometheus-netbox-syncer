@@ -4,8 +4,22 @@
 #
 #    pip-compile requirements.in
 #
+certifi==2022.12.7
+    # via requests
+charset-normalizer==3.1.0
+    # via requests
+idna==3.4
+    # via requests
 pbr==5.11.1
     # via -r requirements.in
+pynetbox==7.0.1
+    # via -r requirements.in
+requests==2.28.2
+    # via
+    #   -r requirements.in
+    #   pynetbox
+urllib3==1.26.15
+    # via requests
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
