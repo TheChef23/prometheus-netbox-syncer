@@ -28,7 +28,7 @@ def main():
     seen = []
     for i in kubernetes_versions:
         if i['tenant'] in seen:
-            logger.error(f"Cluster {i['tenant']} ({i['version']}) duplicated in result. This cluster is running multiple versions")
+            logger.warning(f"Cluster {i['tenant']} ({i['version']}) duplicated in result. This cluster is running multiple versions")
             continue
         seen.append(i['tenant'])
         
@@ -58,13 +58,11 @@ def get_kubernetes_versions():
 def update_netbox_kubernetes_version(tenant, version):
     cluster = netbox.virtualization.clusters.get(name=tenant)
     if cluster is None:
-        logger.error(f"Cluster {tenant} not found in netbox")
+        logger.warning(f"Cluster {tenant} not found in netbox")
         return
-
+    print(tenant, version)
     cluster.custom_fields["k8s_version"] = version
     cluster.save()
-
-
 
 
 if __name__ == "__main__":  # pragma: nocover
