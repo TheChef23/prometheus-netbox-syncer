@@ -1,0 +1,5 @@
+
+
+# For being able to display version info
+pbr>=1.9
+setuptools>=17.1
